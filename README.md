@@ -1,3 +1,3 @@
 # customers_case
 
-Software para administrar clientes
+Software para administrar clientes y emprendedores
