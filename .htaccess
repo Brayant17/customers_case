@@ -1,0 +1,6 @@
+RewriteEngine On
+
+# Si la URL no contiene 'public', redirige a 'public'
+RewriteCond %{REQUEST_URI} !^/customers_case/public/
+
+RewriteRule ^(.*)$ /customers_case/public/$1 [L,R=302]
