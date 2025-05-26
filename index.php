@@ -2,12 +2,12 @@
 
 session_start();
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 use App\MiniRouter;
 use App\Middlewares\AuthMiddleware;
 
-$router = new MiniRouter('/miapp');
+$router = new MiniRouter('/customers_case');
 
 $router->add('GET', '/', 'HomeController@index');
 $router->add('GET', '/user/{id}', 'UserController@show', [
