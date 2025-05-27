@@ -27,6 +27,7 @@ class MiniRouter
         }
 
         $matched = false;
+        $isApi = str_starts_with($uri, '/api');
 
         foreach ($this->routes as [$routeMethod, $routePattern, $handler, $middlewares]) {
             if ($method !== $routeMethod) continue;
@@ -42,7 +43,7 @@ class MiniRouter
                 if (is_callable($handler)) {
                     call_user_func($handler, $params);
                 } elseif (is_string($handler) && strpos($handler, '@') !== false) {
-                    $this->invokeController($handler, $params);
+                    $this->invokeController($handler, $params, $isApi);
                 }
 
                 $matched = true;
@@ -51,7 +52,7 @@ class MiniRouter
         }
 
         if (!$matched) {
-            if ($this->isJsonRequest()) {
+            if ($this->isJsonRequest() || $isApi) {
                 if (function_exists('jsonResponse')) {
                     jsonResponse(['error' => 'Ruta no encontrada'], 404);
                 } else {
@@ -83,10 +84,12 @@ class MiniRouter
         return true;
     }
 
-    private function invokeController(string $handler, array $params): void
+    private function invokeController(string $handler, array $params, bool $isApi): void
     {
         [$controllerName, $method] = explode('@', $handler);
-        $fqcn = "App\\Controllers\\$controllerName";
+
+        $namespace = $isApi ? 'App\\Controllers\\Api\\' : 'App\\Controllers\\Web\\';
+        $fqcn = $namespace . $controllerName;
 
         if (!class_exists($fqcn)) {
             http_response_code(500);
