@@ -4,8 +4,11 @@
 
 <p>Estas es la primera pantalla que aparece desde el controllador y desde las views solicitada por el controllador</p>
 
+<button id="test">Probar Jquery</button>
 
 
 <script>
-    console.log('estamos en la vista de home')
+    $('#test').click(()=>{
+        console.log('hola')
+    })
 </script>
