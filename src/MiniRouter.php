@@ -51,8 +51,18 @@ class MiniRouter
         }
 
         if (!$matched) {
-            http_response_code(404);
-            echo "404 - Ruta no encontrada";
+            if ($this->isJsonRequest()) {
+                if (function_exists('jsonResponse')) {
+                    jsonResponse(['error' => 'Ruta no encontrada'], 404);
+                } else {
+                    header('Content-Type: application/json');
+                    http_response_code(404);
+                    echo json_encode(['error' => 'Ruta no encontrada']);
+                }
+            } else {
+                http_response_code(404);
+                echo "404 - Ruta no encontrada";
+            }
         }
     }
 
@@ -93,5 +103,10 @@ class MiniRouter
         }
 
         call_user_func([$controller, $method], $params);
+    }
+
+    private function isJsonRequest(): bool
+    {
+        return isset($_SERVER['HTTP_ACCEPT']) && strpos($_SERVER['HTTP_ACCEPT'], 'application/json') !== false;
     }
 }

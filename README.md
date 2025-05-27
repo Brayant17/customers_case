@@ -1,5 +1,5 @@
 
-# 🧩 Customers Case - Proyecto PHP con MiniRouter
+# 🧩 Customers Case - Proyecto PHP con JQuery
 
 Este es un proyecto PHP que implementa un mini-router personalizado tipo MVC con namespaces, autoload con Composer y estructura profesional.
 
