@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Controllers\Web;
-
 use App\View;
 
 class HomeController

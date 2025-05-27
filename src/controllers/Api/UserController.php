@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers\Api;
+use App\Services\UserService;
 
 class UserController
 {
@@ -11,14 +12,14 @@ class UserController
 
     // para la API
     public function getByid($params){
-        $user = [
-            'id' => $params['id'],
-            'name' => 'Carlos García',
-            'email' => 'carlos@example.com'
-        ];
+
+        $user = (new UserService())->find($params['id']);
+
+        if(!$user){
+            jsonResponse(['error' => 'Usuario no encontrado'], 404);
+        }
 
         jsonResponse([
-            'success' => true,
             'data' => $user
         ]);
     }
