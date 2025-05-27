@@ -11,11 +11,15 @@ use App\Middlewares\AuthMiddleware;
 
 $router = new MiniRouter('/customers_case');
 
+
+// Rutas de Web
 $router->add('GET', '/', 'HomeController@index');
 $router->add('GET', '/user/{id}', 'UserController@show', [
     AuthMiddleware::class
 ]);
-$router->add('GET', '/api/user/{id}', 'UserController@getById');
 
+
+// Rutas de Api
+$router->add('GET', '/api/user/{id}', 'UserController@getById');
 
 $router->dispatch();
