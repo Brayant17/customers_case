@@ -6,6 +6,8 @@
     <meta charset="UTF-8">
     <title><?= $title ?? 'Mi sitio PHP' ?></title>
     <!-- <link rel="stylesheet" href="/assets/style.css"> -->
+    <!-- JQueryUI -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <!-- Bootstrap CSS vía CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -43,6 +45,7 @@
             </main>
         </div>
         <!-- posibles scripts -->
+         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
     </body>
 
 </html>
