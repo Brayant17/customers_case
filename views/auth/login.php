@@ -36,7 +36,8 @@
         display: flex;
         flex-direction: column;
     }
-    .form_group input{
+
+    .form_group input {
         margin: 5px 0;
         padding: 10px;
         border-radius: 8px;
@@ -44,7 +45,7 @@
         outline: none;
     }
 
-    button{
+    button {
         padding: 13px 20px;
         font-size: 1rem;
         cursor: pointer;
@@ -54,6 +55,7 @@
         color: #f2f6ff;
         transition: .5s ease;
     }
+
     button:hover {
         background-color: #267ffe;
         color: #f2f6ff;
@@ -64,6 +66,12 @@
         <div class="form_header">
             <h2>Welcome Back</h2>
             <p>Enter your credentials to access your account</p>
+            <span>
+                <?php if (!empty($_SESSION['error'])): ?>
+                    <p style="color:red"><?= $_SESSION['error'] ?></p>
+                    <?php unset($_SESSION['error']); ?>
+                <?php endif; ?>
+            </span>
         </div>
         <div class="form_group">
             <label>Email:</label>
@@ -75,9 +83,4 @@
         </div>
         <button type="submit">Iniciar sesión</button>
     </form>
-
-    <?php if (!empty($_SESSION['error'])): ?>
-        <p style="color:red"><?= $_SESSION['error'] ?></p>
-        <?php unset($_SESSION['error']); ?>
-    <?php endif; ?>
 </div>

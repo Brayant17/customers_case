@@ -20,7 +20,7 @@ class AuthController
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['role'] = $user['role'];
-            header('Location: /dashboard');
+            header('Location: '. BASE_PATH .'/');
         } else {
             $_SESSION['error'] = 'Credenciales inválidas';
             header('Location: '. BASE_PATH .'/login');
@@ -30,6 +30,6 @@ class AuthController
     public function logout(): void
     {
         session_destroy();
-        header('Location: /login');
+        header('Location: '. BASE_PATH .'/login');
     }
 }

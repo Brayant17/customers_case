@@ -22,22 +22,28 @@
         <div class="d-flex">
             <!-- Aside -->
             <!-- Sidebar -->
-            <aside class="bg-light border-end p-3" style="width: 250px; min-height: 100vh;">
-                <h4 class="mb-4">Menú</h4>
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/customers_case/">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/customers_case/user/1">Usuario</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/customers_case/about">Acerca de</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Otra opción</a>
-                    </li>
-                </ul>
+            <aside class="bg-light border-end p-3 d-flex flex-column justify-content-between" style="width: 250px; min-height: 100vh;">
+                <div>
+                    <h4 class="mb-4">Menú</h4>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/customers_case/">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/customers_case/user/1">Usuario</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/customers_case/about">Acerca de</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Otra opción</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="d-flex">
+                    <a href="http://localhost/<?= BASE_PATH ?>/logout" type="button" class="btn btn-dark flex-fill">Log out</a>
+                </div>
+
             </aside>
 
             <main class="p-4">
@@ -45,7 +51,7 @@
             </main>
         </div>
         <!-- posibles scripts -->
-         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
     </body>
 
 </html>
