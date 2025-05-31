@@ -48,8 +48,23 @@
 
 <div class="row">
     <div class="column" id="column-1">
-        <h5>titulo1</h5>
-        <div class="user">Usuario 1</div>
+        <div class="d-flex justify-content-between">
+            <h5>1) Cliente prospectado</h5>
+            <span><b>1</b></span>
+        </div>
+        <div class="user row">
+            <div class="col-12">
+                TTMP250302
+            </div>
+            <div class="col-12 border-bottom">Amount $0</div>
+            <div class="col-12">
+                <span class="badge text-bg-secondary">New</span>
+                <p>
+                    No activity for 3 months
+                    ! No activity scheduled
+                </p>
+            </div>
+        </div>
         <div class="user">Usuario 2</div>
     </div>
 
@@ -59,6 +74,7 @@
 
     <div class="column" id="column-3">
         <!-- Vacía inicialmente -->
+         <div class="user">Usuario 4</div>
     </div>
 </div>
 
@@ -82,6 +98,8 @@
                 const desde = ui.sender.attr('id');
                 const hacia = $(this).attr('id');
                 console.log(`🟢 ${usuario} se movió de ${desde} a ${hacia}`);
+                console.log("hacer un llamado a la base de datos para actualizar el estado de la tarjeta, ahora se encuentra en: ", hacia)
+                console.log("Es la tarjeta ", usuario)
             },
 
             update: function(event, ui) {

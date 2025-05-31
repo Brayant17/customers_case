@@ -6,12 +6,10 @@ class AuthMiddleware
 {
     public function handle(): bool
     {
-        // Simulación: verificar si el usuario está "loggeado"
-        $isLoggedIn = $_SESSION['logged_in'] ?? false;
+        session_start();
 
-        if (!$isLoggedIn) {
-            http_response_code(401);
-            echo "401 - No autorizado";
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: ' . BASE_PATH . '/login');
             return false;
         }
 

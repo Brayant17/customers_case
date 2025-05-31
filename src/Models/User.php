@@ -29,4 +29,13 @@ class User
         $stmt = $db->prepare("INSERT INTO users (name, email) VALUES (?, ?)");
         return $stmt->execute([$data['name'], $data['email']]);
     }
+
+    public static function findByEmail(string $email): ?array
+    {
+        $db = Database::connection();
+        $stmt = $db->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt->execute([$email]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
+    }
 }
