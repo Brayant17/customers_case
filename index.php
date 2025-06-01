@@ -23,6 +23,7 @@ $router->add('GET', '/user/{id}', 'UserController@show', [AuthMiddleware::class]
 $router->add('GET', '/login', 'AuthController@showLoginForm');
 $router->add('POST', '/login', 'AuthController@login');
 $router->add('GET', '/logout', 'AuthController@logout');
+$router->add('GET', '/deals/config', 'DealController@configuration', [AuthMiddleware::class]);
 
 
 // Rutas de Api
